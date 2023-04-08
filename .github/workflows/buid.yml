@@ -23,7 +23,7 @@ jobs:
       run: zip -r my-project.zip target/
       
     - name: Upload zip artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: my-project.zip
         path: my-project.zip
