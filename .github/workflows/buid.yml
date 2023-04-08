@@ -1,29 +1,21 @@
-name: Build and Zip with Maven
+name: Build and Zip
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build-and-zip:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2.7.0
+    - uses: actions/checkout@v2.7.0
       
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1.4.4
-      with:
-        java-version: 11
-        
-    - name: Build with Maven
-      run: mvn clean package
-      
-    - name: Zip the project
-      run: zip -r my-project.zip target/
+    - name: Zip repo
+      run: zip -r my-repo.zip .
       
     - name: Upload zip artifact
       uses: actions/upload-artifact@v3.1.2
       with:
-        name: my-project.zip
-        path: my-project.zip
+        name: my-repo.zip
+        path: my-repo.zip
